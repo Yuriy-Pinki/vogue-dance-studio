@@ -1,9 +1,7 @@
 import HomeContent from "@/components/HomeContent";
 import { LocaleProvider } from "@/components/LocaleProvider";
 
-// Cache Components запрещают `new Date()` при пререндере без кэша — год для копирайта кэшируем.
-async function getCurrentYear() {
-  "use cache";
+function getCurrentYear() {
   return new Date().getFullYear();
 }
 
