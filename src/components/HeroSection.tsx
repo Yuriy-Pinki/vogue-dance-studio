@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
+import Image from "next/image";
 import type { HeroDictionary } from "@/dictionaries/types";
 
 interface HeroSectionProps {
@@ -10,6 +11,7 @@ interface HeroSectionProps {
 
 // Staccato: короткий «щелчок» без пружины — как поза на счёт.
 const SNAP = [0.85, 0, 0.15, 1] as const;
+const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Brzeska+18,+Warszawa";
 
 const letterVariants: Variants = {
   hidden: { y: "110%", skewY: 8, opacity: 0 },
@@ -34,9 +36,13 @@ export default function HeroSection({ dict }: HeroSectionProps) {
   const reduceMotion = useReducedMotion();
   const initial = reduceMotion ? "visible" : "hidden";
   const letters = dict.titleWords.join(" ").split("");
+  const titleEnd = 0.35 + letters.length * 0.09;
 
   return (
-    <section className="relative isolate flex min-h-svh flex-col overflow-hidden bg-obsidian text-chalk">
+    <section
+      id="top"
+      className="relative isolate flex min-h-svh flex-col overflow-hidden bg-obsidian pt-16 text-chalk"
+    >
       {/* Атмосфера: фуксия/фиолет из темноты + золотая подиумная линия */}
       <div
         aria-hidden
@@ -66,85 +72,140 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         ))}
       </motion.ul>
 
-      <div className="flex flex-1 flex-col justify-center px-6 py-16 md:px-12">
-        <motion.p
-          className="mb-6 max-w-xl font-mono text-xs uppercase tracking-[0.35em] text-gold"
-          variants={fadeUp}
-          custom={0.2}
-          initial={initial}
-          animate="visible"
-        >
-          {dict.eyebrow}
-        </motion.p>
-
-        <h1 className="font-display uppercase leading-[0.85] tracking-[0.08em]">
-          <span className="sr-only">
-            {dict.titleWords.join(" ")} {dict.signature}
-          </span>
-          <span aria-hidden className="flex overflow-hidden text-[clamp(5rem,22vw,20rem)]">
-            {letters.map((char, i) => (
-              <motion.span
-                key={`${char}-${i}`}
-                className="inline-block"
-                variants={letterVariants}
-                custom={i}
-                initial={initial}
-                animate="visible"
-              >
-                {char === " " ? " " : char}
-              </motion.span>
-            ))}
-          </span>
-          <motion.span
-            aria-hidden
-            className="mt-4 block font-display text-[clamp(1.5rem,4vw,3.5rem)] normal-case italic tracking-[0.04em] text-gold"
+      <div className="grid flex-1 items-center gap-14 px-6 py-12 md:px-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
+        <div>
+          <motion.p
+            className="mb-6 max-w-xl font-mono text-xs uppercase tracking-[0.35em] text-gold"
             variants={fadeUp}
-            custom={0.35 + letters.length * 0.09}
+            custom={0.2}
             initial={initial}
             animate="visible"
           >
-            {dict.signature}
-          </motion.span>
-        </h1>
+            {dict.eyebrow}
+          </motion.p>
 
-        <motion.p
-          className="mt-8 max-w-lg text-base leading-relaxed text-silver md:text-lg"
-          variants={fadeUp}
-          custom={0.9 + letters.length * 0.09}
-          initial={initial}
-          animate="visible"
-        >
-          {dict.subtitle}
-        </motion.p>
-
-        <motion.div
-          className="mt-10 flex flex-wrap items-center gap-4"
-          variants={fadeUp}
-          custom={1.05 + letters.length * 0.09}
-          initial={initial}
-          animate="visible"
-        >
-          {/* TODO: заменить href на buildBookingUrl() из src/lib/booking.ts (Google Form pre-fill) + target="_blank" rel="noopener noreferrer" */}
-          <motion.a
-            href="#"
-            className="group inline-flex items-center gap-3 bg-fuchsia px-8 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk shadow-[0_0_40px_-8px_rgba(225,0,90,0.7)] transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-            whileHover={reduceMotion ? undefined : { x: 4 }}
-            whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-            transition={{ duration: 0.15, ease: SNAP }}
-          >
-            {dict.ctaPrimary}
-            <ArrowUpRight
-              className="size-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          <h1 className="font-display uppercase leading-[0.85] tracking-[0.08em]">
+            <span className="sr-only">
+              {dict.titleWords.join(" ")} {dict.signature}
+            </span>
+            <span aria-hidden className="flex overflow-hidden text-[clamp(4.5rem,16vw,14rem)]">
+              {letters.map((char, i) => (
+                <motion.span
+                  key={`${char}-${i}`}
+                  className="inline-block"
+                  variants={letterVariants}
+                  custom={i}
+                  initial={initial}
+                  animate="visible"
+                >
+                  {char === " " ? " " : char}
+                </motion.span>
+              ))}
+            </span>
+            <motion.span
               aria-hidden
-            />
-          </motion.a>
-          <a
-            href="#schedule"
-            className="inline-flex items-center gap-2 border border-chalk/20 px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              className="mt-4 block font-display text-[clamp(1.5rem,3.5vw,3rem)] normal-case italic tracking-[0.04em] text-gold"
+              variants={fadeUp}
+              custom={titleEnd}
+              initial={initial}
+              animate="visible"
+            >
+              {dict.signature}
+            </motion.span>
+          </h1>
+
+          <motion.p
+            className="mt-8 max-w-lg text-base leading-relaxed text-silver md:text-lg"
+            variants={fadeUp}
+            custom={titleEnd + 0.55}
+            initial={initial}
+            animate="visible"
           >
-            {dict.ctaSecondary}
-          </a>
-        </motion.div>
+            {dict.subtitle}
+          </motion.p>
+
+          <motion.div
+            className="mt-10 flex flex-wrap items-center gap-4"
+            variants={fadeUp}
+            custom={titleEnd + 0.7}
+            initial={initial}
+            animate="visible"
+          >
+            {/* Ведёт к каталогу: у каждой программы своя Google Форма (src/lib/booking.ts) */}
+            <motion.a
+              href="#classes"
+              className="group inline-flex items-center gap-3 bg-fuchsia px-8 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk shadow-[0_0_40px_-8px_rgba(225,0,90,0.7)] transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              whileHover={reduceMotion ? undefined : { x: 4 }}
+              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+              transition={{ duration: 0.15, ease: SNAP }}
+            >
+              {dict.ctaPrimary}
+              <ArrowUpRight
+                className="size-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                aria-hidden
+              />
+            </motion.a>
+            <a
+              href="#about"
+              className="inline-flex items-center gap-2 border border-chalk/20 px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            >
+              {dict.ctaSecondary}
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Журнальный фрейм: тонкая золотая рамка + неоновое свечение */}
+        <figure className="relative mx-auto w-full max-w-md lg:max-w-none">
+          <motion.div
+            className="relative p-3"
+            initial={reduceMotion ? false : { clipPath: "inset(100% 0 0 0)" }}
+            animate={{ clipPath: "inset(0% 0 0 0)" }}
+            transition={{ duration: 1.1, ease: SNAP, delay: 0.5 }}
+          >
+            <div aria-hidden className="absolute inset-0 border border-gold/40" />
+            <div className="relative aspect-[1080/1607] overflow-hidden border border-gold shadow-[0_0_80px_-12px_rgba(225,0,90,0.6),0_0_140px_-40px_rgba(123,44,191,0.7)]">
+              <Image
+                src="/assets/optimized/verushka-hero.webp"
+                alt={dict.imageAlt}
+                fill
+                preload
+                sizes="(min-width: 1024px) 40vw, (min-width: 448px) 28rem, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </motion.div>
+          <figcaption className="mt-3 text-right font-mono text-[10px] uppercase tracking-[0.3em] text-silver">
+            {dict.imageCaption}
+          </figcaption>
+
+          {/* Интерактивные плашки поверх фрейма */}
+          <motion.a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute -top-2 left-0 inline-flex -translate-x-2 items-center gap-2 border border-chalk/15 bg-obsidian/80 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-chalk backdrop-blur-md transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-gold sm:-translate-x-6"
+            variants={fadeUp}
+            custom={1.3}
+            initial={initial}
+            animate="visible"
+            whileHover={reduceMotion ? undefined : { x: 4, transition: { duration: 0.15, ease: SNAP } }}
+          >
+            <MapPin className="size-3.5 text-fuchsia" aria-hidden />
+            {dict.locationBadge}
+          </motion.a>
+          <motion.div
+            variants={fadeUp}
+            custom={1.45}
+            initial={initial}
+            animate="visible"
+            className="absolute bottom-16 right-0 inline-flex max-w-[calc(100%-1rem)] translate-x-2 items-center gap-2.5 border border-gold/50 bg-obsidian/85 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] sm:max-w-none sm:text-[11px] sm:tracking-[0.2em] text-gold backdrop-blur-md sm:translate-x-6">
+            <span className="relative flex size-2" aria-hidden>
+              <span className="absolute inset-0 animate-ping rounded-full bg-fuchsia opacity-75 motion-reduce:animate-none" />
+              <span className="relative size-2 rounded-full bg-fuchsia" />
+            </span>
+            {dict.seasonBadge}
+          </motion.div>
+        </figure>
       </div>
 
       {/* Подиумная бегущая строка */}
@@ -161,7 +222,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
                 className="flex items-center gap-8 pr-8 font-display text-2xl uppercase tracking-[0.15em] text-chalk/70 md:text-3xl"
               >
                 {item}
-                <span className="text-fuchsia">✦</span>
+                <span className="text-fuchsia">•</span>
               </span>
             ))}
           </motion.div>

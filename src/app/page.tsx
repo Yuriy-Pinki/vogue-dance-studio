@@ -1,12 +1,10 @@
-import HeroSection from "@/components/HeroSection";
-import { getDictionary } from "@/dictionaries";
+import HomeContent from "@/components/HomeContent";
+import { LocaleProvider } from "@/components/LocaleProvider";
 
 export default function Home() {
-  const dict = getDictionary();
-
   return (
-    <main className="flex-1">
-      <HeroSection dict={dict.hero} />
-    </main>
+    <LocaleProvider>
+      <HomeContent />
+    </LocaleProvider>
   );
 }
