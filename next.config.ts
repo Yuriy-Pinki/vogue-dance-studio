@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
+const basePath = process.env.NODE_ENV === "production" ? "/vogue-dance-studio" : "";
 
 const nextConfig: NextConfig = {
   output: "export",
@@ -8,7 +8,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isProd ? "/vogue-dance-studio" : "",
+  basePath,
+  assetPrefix: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   turbopack: {
     rules: {
       "*.css": {
