@@ -2,13 +2,13 @@ import type { Dictionary } from "./types";
 
 export const en: Dictionary = {
   meta: {
-    title: "Vogue by Verushka Bonchinche — Vogue & Ballroom Studio",
+    title: "VERUSHKA BONCHINCHE | Vogue Academy & House of Bonchinche",
     description:
       "Group classes, private coaching and online clubs with Verushka Bonchinche — Mother of the House of Bonchinche and founder of Vogue culture in Belarus. Warsaw & online.",
   },
   nav: {
     brand: "Bonchinche",
-    links: { about: "The Mother & The House", classes: "Classes" },
+    links: { about: "The Mother & The House", classes: "Classes", faq: "FAQ", contacts: "Contact" },
     cta: "Book",
     languageLabel: "Site language",
     languages: { ru: "RU", en: "EN" },
@@ -133,5 +133,62 @@ export const en: Dictionary = {
         imageAlt: "Black-and-white photo of Verushka Bonchinche lying on the floor",
       },
     },
+  },
+  faq: {
+    eyebrow: "FAQ · First Timers",
+    title: "Before Your First Walk",
+    items: [
+      {
+        question: "Do I need dance experience to start?",
+        answer:
+          "No. The beginners group is designed to introduce Vogue culture from scratch: Mon / Wed, 19:20–20:20, Brzeska 18. Already know the basics? Join the intermediate level (Mon / Wed, 20:30–21:40). Not sure what you need? Start with a private class — Verushka will help.",
+      },
+      {
+        question: "What should I wear — and do I need heels?",
+        answer:
+          "Comfortable stretchy clothes you feel good in, plus clean indoor shoes — sneakers or socks. Heels are optional. At the intermediate level indoor shoes are a must and you'll need knee pads. Arrive 10 minutes early so you don't miss the warm-up; drinking water is available in the studio.",
+      },
+      {
+        question: "How do the online clubs work?",
+        answer:
+          "Everything happens in a private Telegram group: recorded lessons, regular live sessions (lectures and practice), music playlists for solo practice and detailed feedback on your homework. Runway Online Club is 50 € per month, Old Way Online Club is 90 € for 2 months.",
+      },
+      {
+        question: "How do I get to the studio in Warsaw?",
+        answer:
+          "The studio is at Brzeska 18, Warsaw. Use the Google Maps button in the Contact block at the bottom of the page for directions. Arrive 10 minutes early to catch the warm-up.",
+      },
+      {
+        question: "Can I give a class as a gift?",
+        answer:
+          "Yes — gift certificates are available for any of Verushka's classes. Leave a request through the booking form and she'll get in touch to confirm the details.",
+      },
+    ],
+  },
+  footer: {
+    eyebrow: "Contact · Location",
+    title: "See You on the Runway",
+    studio: {
+      label: "Studio",
+      address: "Brzeska 18",
+      city: "Warszawa, Poland",
+      note: "Studio groups & private classes",
+      mapsCta: "Open in Google Maps",
+    },
+    socialTitle: "Get in Touch",
+    socials: {
+      instagram: { label: "Instagram", handle: "@verushkabonchinche" },
+      telegram: { label: "Telegram", handle: "" },
+      whatsapp: { label: "WhatsApp", handle: "" },
+    },
+    collab: "Open to international projects and collaborations",
+    wordmark: "Bonchinche",
+    copyright: "© {year} House of Bonchinche. All rights reserved.",
+    credits: [
+      { role: "Mother · Choreography", name: "Verushka Bonchinche" },
+      { role: "Photography", name: "Verushka Bonchinche archive" },
+    ],
+    backToTop: "Back to top",
+    newTabHint: "(opens in a new tab)",
   },
 };

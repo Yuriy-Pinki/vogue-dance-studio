@@ -34,7 +34,7 @@ export default function Navbar({ dict, locale, onLocaleChange }: NavbarProps) {
           {dict.brand}
         </a>
 
-        <ul className="hidden items-center gap-8 font-mono text-[11px] uppercase tracking-[0.3em] text-silver md:flex">
+        <ul className="hidden items-center gap-6 font-mono lg:gap-8 text-[11px] uppercase tracking-[0.3em] text-silver lg:flex">
           <li>
             <a href="#about" className="transition-colors hover:text-gold">
               {dict.links.about}
@@ -43,6 +43,16 @@ export default function Navbar({ dict, locale, onLocaleChange }: NavbarProps) {
           <li>
             <a href="#classes" className="transition-colors hover:text-gold">
               {dict.links.classes}
+            </a>
+          </li>
+          <li>
+            <a href="#faq" className="transition-colors hover:text-gold">
+              {dict.links.faq}
+            </a>
+          </li>
+          <li>
+            <a href="#contacts" className="transition-colors hover:text-gold">
+              {dict.links.contacts}
             </a>
           </li>
         </ul>

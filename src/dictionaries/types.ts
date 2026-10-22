@@ -1,10 +1,11 @@
 import type { ClassId } from "@/lib/booking";
+import type { SocialId } from "@/lib/contacts";
 
 export type Locale = "ru" | "en";
 
 export interface NavDictionary {
   brand: string;
-  links: { about: string; classes: string };
+  links: { about: string; classes: string; faq: string; contacts: string };
   cta: string;
   /** aria-label группы переключателя языка */
   languageLabel: string;
@@ -64,6 +65,34 @@ export interface ClassesDictionary {
   items: Record<ClassId, ClassCardDictionary>;
 }
 
+export interface FaqDictionary {
+  eyebrow: string;
+  title: string;
+  items: { question: string; answer: string }[];
+}
+
+export interface FooterDictionary {
+  eyebrow: string;
+  title: string;
+  studio: {
+    label: string;
+    address: string;
+    city: string;
+    note: string;
+    mapsCta: string;
+  };
+  socialTitle: string;
+  socials: Record<SocialId, { label: string; handle: string }>;
+  collab: string;
+  /** Подпись-логотип (крупный wordmark) */
+  wordmark: string;
+  /** `{year}` подставляется в компоненте */
+  copyright: string;
+  credits: { role: string; name: string }[];
+  backToTop: string;
+  newTabHint: string;
+}
+
 export interface Dictionary {
   meta: {
     title: string;
@@ -73,4 +102,6 @@ export interface Dictionary {
   hero: HeroDictionary;
   about: AboutDictionary;
   classes: ClassesDictionary;
+  faq: FaqDictionary;
+  footer: FooterDictionary;
 }

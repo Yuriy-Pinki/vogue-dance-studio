@@ -4,6 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import type { HeroDictionary } from "@/dictionaries/types";
+import { externalLinkProps, STUDIO_MAPS_URL } from "@/lib/contacts";
 
 interface HeroSectionProps {
   dict: HeroDictionary;
@@ -11,7 +12,6 @@ interface HeroSectionProps {
 
 // Staccato: короткий «щелчок» без пружины — как поза на счёт.
 const SNAP = [0.85, 0, 0.15, 1] as const;
-const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Brzeska+18,+Warszawa";
 
 const letterVariants: Variants = {
   hidden: { y: "110%", skewY: 8, opacity: 0 },
@@ -180,9 +180,8 @@ export default function HeroSection({ dict }: HeroSectionProps) {
 
           {/* Интерактивные плашки поверх фрейма */}
           <motion.a
-            href={MAPS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={STUDIO_MAPS_URL}
+            {...externalLinkProps}
             className="absolute -top-2 left-0 inline-flex -translate-x-2 items-center gap-2 border border-chalk/15 bg-obsidian/80 px-3 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-chalk backdrop-blur-md transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-gold sm:-translate-x-6"
             variants={fadeUp}
             custom={1.3}
