@@ -4,17 +4,12 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
-
   images: {
     unoptimized: true,
   },
-
+  // Указываем basePath только для продакшн-сборки на GitHub
   basePath: isProd ? "/vogue-dance-studio" : "",
-  assetPrefix: isProd ? "/vogue-dance-studio" : "",
-  env: {
-    NEXT_PUBLIC_BASE_PATH: isProd ? "/vogue-dance-studio" : "",
-  },
-
+  
   turbopack: {
     rules: {
       "*.css": {
