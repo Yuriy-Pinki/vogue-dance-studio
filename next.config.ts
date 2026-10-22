@@ -4,12 +4,11 @@ const isProd = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
   output: "export",
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // Указываем basePath только для продакшн-сборки на GitHub
   basePath: isProd ? "/vogue-dance-studio" : "",
-  
   turbopack: {
     rules: {
       "*.css": {
