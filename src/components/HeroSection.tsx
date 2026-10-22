@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import { assetPath } from "@/lib/asset";
+import { asset } from "@/lib/asset";
 import type { HeroDictionary } from "@/dictionaries/types";
 import { bookingLinkProps } from "@/lib/booking";
 import { externalLinkProps, STUDIO_MAPS_URL } from "@/lib/contacts";
@@ -167,7 +167,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             <div aria-hidden className="pointer-events-none absolute inset-0 border border-gold/40" />
             <div className="relative aspect-[1080/1607] overflow-hidden border border-gold shadow-[0_0_80px_-12px_rgba(225,0,90,0.6),0_0_140px_-40px_rgba(123,44,191,0.7)]">
               <Image
-                src={assetPath("/assets/optimized/verushka-hero.webp")}
+                src={asset("/assets/optimized/verushka-hero.webp")}
                 alt={dict.imageAlt}
                 fill
                 preload

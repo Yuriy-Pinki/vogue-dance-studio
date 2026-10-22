@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import { assetPath } from "@/lib/asset";
+import { asset } from "@/lib/asset";
 import type { ClassesDictionary } from "@/dictionaries/types";
 import { bookingLinkProps, type ClassId } from "@/lib/booking";
 
@@ -68,7 +68,7 @@ export default function ClassesSection({ dict }: ClassesSectionProps) {
             >
               <div className={`relative aspect-[4/3] overflow-hidden border-b border-chalk/10 ${i >= 3 ? "lg:aspect-[16/9]" : ""} ${i === PROGRAMS.length - 1 ? "md:aspect-[16/9]" : ""}`}>
                 <Image
-                  src={assetPath(program.image)}
+                  src={asset(program.image)}
                   alt={item.imageAlt}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"

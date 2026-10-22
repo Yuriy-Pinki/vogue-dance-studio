@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Image from "next/image";
-import { assetPath } from "@/lib/asset";
+import { asset } from "@/lib/asset";
 import type { AboutDictionary } from "@/dictionaries/types";
 
 interface AboutSectionProps {
@@ -109,7 +109,7 @@ export default function AboutSection({ dict }: AboutSectionProps) {
             <motion.figure key={image.src} className={`group ${image.offset}`} {...motionProps} custom={i * 0.12}>
               <div className={`group relative overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${image.aspect}`}>
                 <Image
-                  src={assetPath(image.src)}
+                  src={asset(image.src)}
                   alt={text.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
