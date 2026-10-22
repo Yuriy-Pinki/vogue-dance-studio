@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUp, ArrowUpRight, MapPin } from "lucide-react";
 import type { FooterDictionary } from "@/dictionaries/types";
+import { bookingLinkProps } from "@/lib/booking";
 import { externalLinkProps, SOCIAL_LINKS, STUDIO_MAPS_URL, type SocialId } from "@/lib/contacts";
 
 interface FooterSectionProps {
@@ -11,7 +12,7 @@ interface FooterSectionProps {
 }
 
 const SNAP = [0.85, 0, 0.15, 1] as const;
-const SOCIAL_ORDER: SocialId[] = ["instagram", "telegram", "whatsapp"];
+const SOCIAL_ORDER: SocialId[] = ["instagram", "telegram"];
 
 const reveal: Variants = {
   hidden: { y: 32, opacity: 0 },
@@ -31,11 +32,7 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
     viewport: { once: true, margin: "-60px" },
   } as const;
 
-  // Показываем только соцсети с подтверждённой ссылкой (см. src/lib/contacts.ts)
-  const socials = SOCIAL_ORDER.flatMap((id) => {
-    const href = SOCIAL_LINKS[id];
-    return href ? [{ id, href, ...dict.socials[id] }] : [];
-  });
+  const socials = SOCIAL_ORDER.map((id) => ({ id, href: SOCIAL_LINKS[id], ...dict.socials[id] }));
 
   return (
     <footer id="contacts" className="relative scroll-mt-16 overflow-hidden border-t border-chalk/10 bg-obsidian text-chalk">
@@ -71,18 +68,31 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
               <span className="mt-3 block font-mono text-sm uppercase tracking-[0.3em] text-silver">{dict.studio.city}</span>
             </address>
             <p className="mt-6 max-w-sm text-base text-silver">{dict.studio.note}</p>
-            <a
-              href={STUDIO_MAPS_URL}
-              {...externalLinkProps}
-              className="group/cta mt-10 inline-flex items-center gap-3 bg-fuchsia px-7 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk shadow-[0_0_40px_-10px_rgba(225,0,90,0.7)] transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
-            >
-              {dict.studio.mapsCta}
-              <span className="sr-only">{` ${dict.newTabHint}`}</span>
-              <ArrowUpRight
-                className="size-4 transition-transform duration-150 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
-                aria-hidden
-              />
-            </a>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <a
+                {...bookingLinkProps}
+                className="group/book inline-flex items-center gap-3 bg-fuchsia px-7 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk shadow-[0_0_40px_-10px_rgba(225,0,90,0.7)] transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              >
+                {dict.studio.bookCta}
+                <span className="sr-only">{` ${dict.newTabHint}`}</span>
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-150 group-hover/book:-translate-y-0.5 group-hover/book:translate-x-0.5"
+                  aria-hidden
+                />
+              </a>
+              <a
+                href={STUDIO_MAPS_URL}
+                {...externalLinkProps}
+                className="group/cta inline-flex items-center gap-3 border border-chalk/20 px-7 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk transition-colors hover:border-gold hover:text-gold focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+              >
+                {dict.studio.mapsCta}
+                <span className="sr-only">{` ${dict.newTabHint}`}</span>
+                <ArrowUpRight
+                  className="size-4 transition-transform duration-150 group-hover/cta:-translate-y-0.5 group-hover/cta:translate-x-0.5"
+                  aria-hidden
+                />
+              </a>
+            </div>
           </motion.div>
 
           {/* Соцсети */}

@@ -4,6 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import type { HeroDictionary } from "@/dictionaries/types";
+import { bookingLinkProps } from "@/lib/booking";
 import { externalLinkProps, STUDIO_MAPS_URL } from "@/lib/contacts";
 
 interface HeroSectionProps {
@@ -131,15 +132,15 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             initial={initial}
             animate="visible"
           >
-            {/* Ведёт к каталогу: у каждой программы своя Google Форма (src/lib/booking.ts) */}
             <motion.a
-              href="#classes"
+              {...bookingLinkProps}
               className="group inline-flex items-center gap-3 bg-fuchsia px-8 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk shadow-[0_0_40px_-8px_rgba(225,0,90,0.7)] transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
               whileHover={reduceMotion ? undefined : { x: 4 }}
               whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               transition={{ duration: 0.15, ease: SNAP }}
             >
               {dict.ctaPrimary}
+              <span className="sr-only">{` ${dict.newTabHint}`}</span>
               <ArrowUpRight
                 className="size-4 transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                 aria-hidden

@@ -4,7 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import type { ClassesDictionary } from "@/dictionaries/types";
-import { bookingLinkProps, buildBookingUrl, type ClassId } from "@/lib/booking";
+import { bookingLinkProps, type ClassId } from "@/lib/booking";
 
 interface ClassesSectionProps {
   dict: ClassesDictionary;
@@ -107,7 +107,6 @@ export default function ClassesSection({ dict }: ClassesSectionProps) {
                 </dl>
 
                 <a
-                  href={buildBookingUrl(program.id)}
                   {...bookingLinkProps}
                   className="mt-auto flex items-center justify-between gap-3 bg-fuchsia px-6 py-4 font-mono text-sm uppercase tracking-[0.2em] text-chalk transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
                 >

@@ -10,6 +10,7 @@ export interface NavDictionary {
   /** aria-label группы переключателя языка */
   languageLabel: string;
   languages: Record<Locale, string>;
+  newTabHint: string;
 }
 
 export interface HeroDictionary {
@@ -23,6 +24,7 @@ export interface HeroDictionary {
   ctaPrimary: string;
   ctaSecondary: string;
   scrollHint: string;
+  newTabHint: string;
   locationBadge: string;
   seasonBadge: string;
   imageAlt: string;
@@ -80,6 +82,7 @@ export interface FooterDictionary {
     city: string;
     note: string;
     mapsCta: string;
+    bookCta: string;
   };
   socialTitle: string;
   socials: Record<SocialId, { label: string; handle: string }>;

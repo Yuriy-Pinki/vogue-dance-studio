@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale, NavDictionary } from "@/dictionaries/types";
+import { bookingLinkProps } from "@/lib/booking";
 
 interface NavbarProps {
   dict: NavDictionary;
@@ -90,8 +91,8 @@ export default function Navbar({ dict, locale, onLocaleChange }: NavbarProps) {
           </div>
 
           <a
-            href="#classes"
-            aria-label={dict.cta}
+            {...bookingLinkProps}
+            aria-label={`${dict.cta} ${dict.newTabHint}`}
             className="group inline-flex items-center gap-2 bg-fuchsia px-3 py-2 sm:px-4 font-mono text-[11px] uppercase tracking-[0.2em] text-chalk transition-colors hover:bg-chalk hover:text-obsidian focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
           >
             <span className="hidden sm:inline">{dict.cta}</span>
