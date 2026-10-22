@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 import type { ClassesDictionary } from "@/dictionaries/types";
 import { bookingLinkProps, type ClassId } from "@/lib/booking";
 
@@ -67,13 +68,17 @@ export default function ClassesSection({ dict }: ClassesSectionProps) {
             >
               <div className={`relative aspect-[4/3] overflow-hidden border-b border-chalk/10 ${i >= 3 ? "lg:aspect-[16/9]" : ""} ${i === PROGRAMS.length - 1 ? "md:aspect-[16/9]" : ""}`}>
                 <Image
-                  src={program.image}
+                  src={assetPath(program.image)}
                   alt={item.imageAlt}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                  className="object-cover object-top grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
                 />
-                <span className="absolute left-4 top-4 bg-obsidian/85 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-chalk backdrop-blur-md">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-fuchsia opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-20"
+                />
+                <span className="pointer-events-none absolute left-4 top-4 bg-obsidian/85 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-chalk backdrop-blur-md">
                   {item.format}
                 </span>
               </div>

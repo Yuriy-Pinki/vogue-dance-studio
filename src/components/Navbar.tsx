@@ -80,7 +80,7 @@ export default function Navbar({ dict, locale, onLocaleChange }: NavbarProps) {
                   {active && (
                     <motion.span
                       layoutId="locale-pill"
-                      className="absolute inset-0 -z-10 bg-chalk"
+                      className="pointer-events-none absolute inset-0 -z-10 bg-chalk"
                       transition={{ duration: reduceMotion ? 0 : 0.2, ease: SNAP }}
                     />
                   )}

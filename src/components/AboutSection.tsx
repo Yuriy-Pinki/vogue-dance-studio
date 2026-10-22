@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 import type { AboutDictionary } from "@/dictionaries/types";
 
 interface AboutSectionProps {
@@ -59,7 +60,7 @@ export default function AboutSection({ dict }: AboutSectionProps) {
           <motion.figure className="relative mb-14" {...motionProps}>
             <span
               aria-hidden
-              className="absolute -left-2 -top-10 font-display text-[8rem] leading-none text-fuchsia/80 md:-left-8"
+              className="pointer-events-none absolute -left-2 -top-10 font-display text-[8rem] leading-none text-fuchsia/80 md:-left-8"
             >
               “
             </span>
@@ -106,13 +107,17 @@ export default function AboutSection({ dict }: AboutSectionProps) {
           if (!text) return null;
           return (
             <motion.figure key={image.src} className={`group ${image.offset}`} {...motionProps} custom={i * 0.12}>
-              <div className={`relative overflow-hidden border border-chalk/10 transition-colors duration-500 group-hover:border-gold ${image.aspect}`}>
+              <div className={`group relative overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${image.aspect}`}>
                 <Image
-                  src={image.src}
+                  src={assetPath(image.src)}
                   alt={text.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover grayscale transition-[filter,scale] duration-700 ease-out group-hover:scale-[1.04] group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
+                  className="object-cover grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
+                />
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-fuchsia opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-20"
                 />
               </div>
               <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-silver transition-colors group-hover:text-gold">

@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 import type { HeroDictionary } from "@/dictionaries/types";
 import { bookingLinkProps } from "@/lib/booking";
 import { externalLinkProps, STUDIO_MAPS_URL } from "@/lib/contacts";
@@ -51,7 +52,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
       />
       <motion.div
         aria-hidden
-        className="absolute left-0 top-1/2 -z-10 h-px w-full origin-left bg-gradient-to-r from-transparent via-gold/40 to-transparent"
+        className="pointer-events-none absolute left-0 top-1/2 -z-10 h-px w-full origin-left bg-gradient-to-r from-transparent via-gold/40 to-transparent"
         initial={reduceMotion ? false : { scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.4, ease: SNAP, delay: 0.2 }}
@@ -163,10 +164,10 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             animate={{ clipPath: "inset(0% 0 0 0)" }}
             transition={{ duration: 1.1, ease: SNAP, delay: 0.5 }}
           >
-            <div aria-hidden className="absolute inset-0 border border-gold/40" />
+            <div aria-hidden className="pointer-events-none absolute inset-0 border border-gold/40" />
             <div className="relative aspect-[1080/1607] overflow-hidden border border-gold shadow-[0_0_80px_-12px_rgba(225,0,90,0.6),0_0_140px_-40px_rgba(123,44,191,0.7)]">
               <Image
-                src="/assets/optimized/verushka-hero.webp"
+                src={assetPath("/assets/optimized/verushka-hero.webp")}
                 alt={dict.imageAlt}
                 fill
                 preload
@@ -200,7 +201,7 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             animate="visible"
             className="absolute bottom-16 right-0 inline-flex max-w-[calc(100%-1rem)] translate-x-2 items-center gap-2.5 border border-gold/50 bg-obsidian/85 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] sm:max-w-none sm:text-[11px] sm:tracking-[0.2em] text-gold backdrop-blur-md sm:translate-x-6">
             <span className="relative flex size-2" aria-hidden>
-              <span className="absolute inset-0 animate-ping rounded-full bg-fuchsia opacity-75 motion-reduce:animate-none" />
+              <span className="pointer-events-none absolute inset-0 animate-ping rounded-full bg-fuchsia opacity-75 motion-reduce:animate-none" />
               <span className="relative size-2 rounded-full bg-fuchsia" />
             </span>
             {dict.seasonBadge}

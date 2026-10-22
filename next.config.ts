@@ -11,6 +11,9 @@ const nextConfig: NextConfig = {
 
   basePath: isProd ? "/vogue-dance-studio" : "",
   assetPrefix: isProd ? "/vogue-dance-studio" : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? "/vogue-dance-studio" : "",
+  },
 
   turbopack: {
     rules: {
