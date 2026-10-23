@@ -8,7 +8,7 @@ import HeroSection from "./HeroSection";
 import { useLocale } from "./LocaleProvider";
 import Navbar from "./Navbar";
 
-// Читает словарь из контекста и раздаёт секциям через props — смена языка мгновенная.
+// Reads the active dictionary from context and passes slices down, so locale switches re-render instantly.
 export default function HomeContent({ year }: { year: number }) {
   const { locale, dict, setLocale } = useLocale();
 

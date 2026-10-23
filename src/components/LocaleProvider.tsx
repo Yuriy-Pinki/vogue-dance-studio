@@ -18,7 +18,7 @@ function isLocale(value: unknown): value is Locale {
   return value === "ru" || value === "en";
 }
 
-// localStorage как внешний стор: сервер и гидрация видят defaultLocale, клиент — сохранённый язык.
+// localStorage as an external store: SSR and hydration use defaultLocale, the client then reads the saved locale.
 function readStoredLocale(): Locale {
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
@@ -41,7 +41,7 @@ function setLocale(locale: Locale) {
   try {
     window.localStorage.setItem(STORAGE_KEY, locale);
   } catch {
-    // Приватный режим / заблокированное хранилище — язык просто не запомнится.
+    // Storage unavailable (private mode / blocked): the choice simply isn't persisted.
   }
   window.dispatchEvent(new Event(CHANGE_EVENT));
 }

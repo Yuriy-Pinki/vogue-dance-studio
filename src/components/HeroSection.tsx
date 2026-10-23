@@ -4,6 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
+import { MEDIA } from "@/lib/media";
 import type { HeroDictionary } from "@/dictionaries/types";
 import { bookingLinkProps } from "@/lib/booking";
 import { externalLinkProps, STUDIO_MAPS_URL } from "@/lib/contacts";
@@ -12,7 +13,7 @@ interface HeroSectionProps {
   dict: HeroDictionary;
 }
 
-// Staccato: короткий «щелчок» без пружины — как поза на счёт.
+// Staccato easing: a hard snap with no spring, like hitting a pose on the beat.
 const SNAP = [0.85, 0, 0.15, 1] as const;
 
 const letterVariants: Variants = {
@@ -45,7 +46,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
       id="top"
       className="relative isolate flex min-h-svh flex-col overflow-hidden bg-obsidian pt-16 text-chalk"
     >
-      {/* Атмосфера: фуксия/фиолет из темноты + золотая подиумная линия */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_75%_30%,rgba(225,0,90,0.22),transparent_70%),radial-gradient(45%_40%_at_15%_85%,rgba(123,44,191,0.18),transparent_70%)]"
@@ -58,7 +58,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         transition={{ duration: 1.4, ease: SNAP, delay: 0.2 }}
       />
 
-      {/* Мета-строка */}
       <motion.ul
         className="flex flex-wrap gap-x-6 gap-y-2 px-6 pt-8 font-mono text-[11px] uppercase tracking-[0.3em] text-silver md:px-12"
         variants={fadeUp}
@@ -156,7 +155,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
           </motion.div>
         </div>
 
-        {/* Журнальный фрейм: тонкая золотая рамка + неоновое свечение */}
         <figure className="relative mx-auto w-full max-w-md lg:max-w-none">
           <motion.div
             className="relative p-3"
@@ -167,8 +165,8 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             <div aria-hidden className="pointer-events-none absolute inset-0 border border-gold/40" />
             <div className="relative aspect-[1080/1607] overflow-hidden border border-gold shadow-[0_0_80px_-12px_rgba(225,0,90,0.6),0_0_140px_-40px_rgba(123,44,191,0.7)]">
               <Image
-                src={asset("/assets/optimized/verushka-hero.webp")}
-                alt={dict.imageAlt}
+                src={asset(MEDIA.hero.src)}
+                alt={MEDIA.hero.alt}
                 fill
                 preload
                 sizes="(min-width: 1024px) 40vw, (min-width: 448px) 28rem, 100vw"
@@ -180,7 +178,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
             {dict.imageCaption}
           </figcaption>
 
-          {/* Интерактивные плашки поверх фрейма */}
           <motion.a
             href={STUDIO_MAPS_URL}
             {...externalLinkProps}
@@ -209,7 +206,6 @@ export default function HeroSection({ dict }: HeroSectionProps) {
         </figure>
       </div>
 
-      {/* Подиумная бегущая строка */}
       <div className="relative border-y border-chalk/10 py-4">
         <div className="flex overflow-hidden" aria-hidden>
           <motion.div

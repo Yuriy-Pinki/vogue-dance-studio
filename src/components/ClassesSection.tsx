@@ -4,6 +4,7 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
+import { MEDIA, type MediaItem } from "@/lib/media";
 import type { ClassesDictionary } from "@/dictionaries/types";
 import { bookingLinkProps, type ClassId } from "@/lib/booking";
 
@@ -13,12 +14,12 @@ interface ClassesSectionProps {
 
 const SNAP = [0.85, 0, 0.15, 1] as const;
 
-const PROGRAMS: { id: ClassId; image: string; premium?: boolean }[] = [
-  { id: "offline-beginners", image: "/assets/optimized/verushka-hands.webp" },
-  { id: "offline-middle", image: "/assets/optimized/verushka-arch.webp" },
-  { id: "individual", image: "/assets/optimized/verushka-portrait-bw.webp", premium: true },
-  { id: "runway-club", image: "/assets/optimized/verushka-raise.webp" },
-  { id: "old-way-club", image: "/assets/optimized/verushka-floor-bw.webp" },
+const PROGRAMS: { id: ClassId; image: MediaItem; premium?: boolean }[] = [
+  { id: "offline-beginners", image: MEDIA.hands },
+  { id: "offline-middle", image: MEDIA.arch },
+  { id: "individual", image: MEDIA.portraitBw, premium: true },
+  { id: "runway-club", image: MEDIA.raise },
+  { id: "old-way-club", image: MEDIA.floorBw },
 ];
 
 const cardIn: Variants = {
@@ -68,8 +69,8 @@ export default function ClassesSection({ dict }: ClassesSectionProps) {
             >
               <div className={`relative aspect-[4/3] overflow-hidden border-b border-chalk/10 ${i >= 3 ? "lg:aspect-[16/9]" : ""} ${i === PROGRAMS.length - 1 ? "md:aspect-[16/9]" : ""}`}>
                 <Image
-                  src={asset(program.image)}
-                  alt={item.imageAlt}
+                  src={asset(program.image.src)}
+                  alt={program.image.alt}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   className="object-cover object-top grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"

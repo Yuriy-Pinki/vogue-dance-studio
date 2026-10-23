@@ -27,7 +27,6 @@ export interface HeroDictionary {
   newTabHint: string;
   locationBadge: string;
   seasonBadge: string;
-  imageAlt: string;
   /** Подпись к фото в стиле журнального кредита */
   imageCaption: string;
   /** Бегущая строка категорий */
@@ -42,7 +41,8 @@ export interface AboutDictionary {
   story: string[];
   factsTitle: string;
   facts: { label: string; value: string }[];
-  gallery: { alt: string; caption: string }[];
+  /** Подписи к галерее; alt-тексты — в `src/lib/media.ts` */
+  gallery: string[];
 }
 
 export interface ClassCardDictionary {
@@ -52,7 +52,6 @@ export interface ClassCardDictionary {
   description: string;
   schedule: string[];
   prices: { label: string; value: string }[];
-  imageAlt: string;
 }
 
 export interface ClassesDictionary {
@@ -98,6 +97,8 @@ export interface FooterDictionary {
 
 export interface Dictionary {
   meta: {
+    /** Короткое имя бренда для шаблона title и JSON-LD */
+    brand: string;
     title: string;
     description: string;
   };

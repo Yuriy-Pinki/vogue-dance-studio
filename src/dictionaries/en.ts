@@ -2,13 +2,14 @@ import type { Dictionary } from "./types";
 
 export const en: Dictionary = {
   meta: {
-    title: "VERUSHKA BONCHINCHE | Vogue Academy & House of Bonchinche",
+    brand: "Vogue by Verushka Bonchinche",
+    title: "Vogue by Verushka Bonchinche | Dance Studio in Warsaw & Online",
     description:
-      "Group classes, private coaching and online clubs with Verushka Bonchinche — Mother of the House of Bonchinche and founder of Vogue culture in Belarus. Warsaw & online.",
+      "Vogue Femme with Verushka Bonchinche: vogue dance in Warsaw and online. House of Bonchinche group classes, masterclasses and online courses.",
   },
   nav: {
     brand: "Bonchinche",
-    links: { about: "The Mother & The House", classes: "Classes", faq: "FAQ", contacts: "Contact" },
+    links: { about: "Bio", classes: "Classes", faq: "FAQ", contacts: "Contact" },
     cta: "Book",
     languageLabel: "Site language",
     languages: { ru: "RU", en: "EN" },
@@ -16,18 +17,17 @@ export const en: Dictionary = {
   },
   hero: {
     metaTags: ["Vogue Femme", "Warsaw · Worldwide", "Studio / Online"],
-    eyebrow: "Mother of the House of Bonchinche · Founder of Vogue culture in Belarus",
+    eyebrow: "Mother of the House of Bonchinche · Founder of Vogue in Belarus",
     titleWords: ["Vogue"],
     signature: "by Verushka Bonchinche",
     subtitle:
-      "Group classes in Warsaw, private coaching and online clubs — from your first Walk to tens across the board in your category.",
-    ctaPrimary: "Book a Class",
-    ctaSecondary: "Meet Verushka",
+      "Lines. Presence. Confidence. Group classes in Warsaw, private coaching and online clubs — from your first Walk to tens across the board.",
+    ctaPrimary: "Book",
+    ctaSecondary: "Bio",
     newTabHint: "(opens in a new tab)",
     scrollHint: "Scroll",
     locationBadge: "Warszawa • Brzeska 18",
     seasonBadge: "Fall / Winter Season • Open Registration",
-    imageAlt: "Verushka Bonchinche in a sculptural red look, full length",
     imageCaption: "Look 01 · Verushka Bonchinche",
     marquee: [
       "Hands Performance",
@@ -45,29 +45,24 @@ export const en: Dictionary = {
       "My classes are not only about dance and culture — they are about a warm, supportive community.",
     quoteAuthor: "Verushka Bonchinche",
     story: [
-      "Verushka Bonchinche is the founder of Vogue culture in Belarus and the Mother of the House of Bonchinche. Today she is based in Warsaw and teaches Vogue in the studio and online — to students all over the world.",
-      "In Ballroom culture a House is a family: the Mother takes her children to the balls and passes on technique, style and character. The House of Bonchinche stands on the same thing — a community where confidence and a signature style can grow.",
-      "Beyond teaching, she works as an artist, choreographer, director and producer — shows, music videos, campaigns and fashion shows — and judges dance competitions, festivals and Vogue balls.",
+      "Founder of Vogue culture in Belarus. Mother of the House of Bonchinche. Now based in Warsaw, teaching in the studio and online to students worldwide.",
+      "In Ballroom, a House is family. The Mother takes her children to the balls and passes on what matters: technique, style, character. The House of Bonchinche is a community where confidence and a signature style grow.",
+      "Beyond the studio: artist, choreographer, director and producer — shows, music videos, campaigns, fashion shows. On the judging panel: competitions, festivals and Vogue balls.",
     ],
     factsTitle: "Dossier",
     facts: [
       { label: "Founder", value: "Vogue culture in Belarus" },
       { label: "House", value: "Mother of the House of Bonchinche" },
-      { label: "Base", value: "Warsaw, Poland · working worldwide" },
+      { label: "Base", value: "Warsaw · Worldwide" },
       { label: "Roles", value: "Artist · Choreographer · Director · Producer" },
-      { label: "Judging", value: "Competitions, festivals & Vogue balls" },
+      { label: "Judging", value: "Competitions, festivals, Vogue balls" },
     ],
-    gallery: [
-      { alt: "Verushka Bonchinche posing on the floor in a red look", caption: "Look 02 · Floor" },
-      { alt: "Verushka Bonchinche from behind with the House of Bonchinche logo", caption: "Look 03 · House of Bonchinche" },
-      { alt: "Verushka Bonchinche mid-movement, arm arched overhead", caption: "Look 04 · Arms" },
-    ],
+    gallery: ["Look 02 · Floor", "Look 03 · House of Bonchinche", "Look 04 · Arms"],
   },
   classes: {
     eyebrow: "Classes · Studio / Online",
     title: "Choose Your Category",
-    intro:
-      "Real formats, schedules and prices. Fill in the form and Verushka will get in touch to confirm the details and format.",
+    intro: "Format, schedule, price — no fine print. Send a request and Verushka will help you pick your class.",
     scheduleLabel: "Schedule",
     pricesLabel: "Pricing",
     bookCta: "Book",
@@ -77,62 +72,53 @@ export const en: Dictionary = {
         format: "Studio · Warsaw",
         level: "Beginners",
         title: "Vogue From Zero",
-        description:
-          "A group where Verushka introduces Vogue culture from scratch. Just starting out? Perfect — this group is made for you.",
+        description: "No experience needed. Culture, foundations and your first confident line — from day one.",
         schedule: ["Mon / Wed · 19:20–20:20", "Brzeska 18, Warsaw"],
         prices: [
           { label: "Drop-in", value: "90 PLN" },
           { label: "4 classes", value: "300 PLN" },
           { label: "8 classes", value: "450 PLN" },
         ],
-        imageAlt: "Verushka Bonchinche with hands in her hair, red bodysuit",
       },
       "offline-middle": {
         format: "Studio · Warsaw",
         level: "Intermediate",
         title: "Level Up Your Vogue",
-        description:
-          "For those who already know the Vogue basics and keep growing in the style. Bring knee pads and indoor shoes.",
+        description: "The basics are in your body — now we sharpen the lines and grow the style. Bring knee pads and indoor shoes.",
         schedule: ["Mon / Wed · 20:30–21:40", "Brzeska 18, Warsaw"],
         prices: [
           { label: "Drop-in", value: "90 PLN" },
           { label: "4 classes", value: "300 PLN" },
           { label: "8 classes", value: "450 PLN" },
         ],
-        imageAlt: "Verushka Bonchinche mid-movement, arm arched overhead",
       },
       individual: {
         format: "Studio / Online",
         level: "One-on-One",
         title: "Private Coaching",
-        description:
-          "Learn the foundations, explore a substyle, learn or create choreography — built around your request. Not sure what you need? Verushka will help.",
+        description: "Foundations, a substyle or choreography — built around you. Not sure where to start? Verushka will guide you.",
         schedule: ["By arrangement", "Brzeska 18 or online"],
         prices: [
           { label: "1 class", value: "280 PLN" },
           { label: "4 classes", value: "1000 PLN" },
         ],
-        imageAlt: "Black-and-white over-the-shoulder portrait of Verushka Bonchinche",
       },
       "runway-club": {
         format: "Online · Telegram",
         level: "Beginners / Intermediate",
         title: "Runway Online Club",
         description:
-          "Walk and posing in the European Runway style: a feminine walk driven by the hips, confidence in heels, your best angles on camera — and walking the balls.",
+          "European Runway walk and posing: hips in motion, confidence in heels, your best angles on camera — and walking the balls.",
         schedule: ["Recorded lessons + live sessions", "Next intake — confirmed on sign-up"],
         prices: [{ label: "1 month", value: "50 €" }],
-        imageAlt: "Verushka Bonchinche full length, arm raised high",
       },
       "old-way-club": {
         format: "Online · Telegram",
         level: "Open Level",
         title: "Old Way Online Club",
-        description:
-          "A club devoted to Old Way, the first Vogue substyle — the foundation it all started from. Precision, grace and style. For beginners and returning dancers alike.",
+        description: "Old Way — the first Vogue substyle, where it all began. Precision, grace, style. For beginners and returning dancers alike.",
         schedule: ["Recorded lessons + live sessions", "Next intake — confirmed on sign-up"],
         prices: [{ label: "2 months", value: "90 €" }],
-        imageAlt: "Black-and-white photo of Verushka Bonchinche lying on the floor",
       },
     },
   },
@@ -141,29 +127,27 @@ export const en: Dictionary = {
     title: "Before Your First Walk",
     items: [
       {
-        question: "Do I need dance experience to start?",
+        question: "Do I need experience?",
         answer:
-          "No. The beginners group is designed to introduce Vogue culture from scratch: Mon / Wed, 19:20–20:20, Brzeska 18. Already know the basics? Join the intermediate level (Mon / Wed, 20:30–21:40). Not sure what you need? Start with a private class — Verushka will help.",
+          "No. The beginners level starts from zero: Mon / Wed, 19:20–20:20, Brzeska 18. Know the basics? Join intermediate: Mon / Wed, 20:30–21:40. Not sure? Start with a private class.",
       },
       {
-        question: "What should I wear — and do I need heels?",
+        question: "What do I wear? Do I need heels?",
         answer:
-          "Comfortable stretchy clothes you feel good in, plus clean indoor shoes — sneakers or socks. Heels are optional. At the intermediate level indoor shoes are a must and you'll need knee pads. Arrive 10 minutes early so you don't miss the warm-up; drinking water is available in the studio.",
+          "Comfortable stretchy clothes you feel good in, plus clean indoor shoes — sneakers or socks. Heels are optional. At intermediate level, indoor shoes and knee pads are a must. Arrive 10 minutes early — we never skip the warm-up. Drinking water is available in the studio.",
       },
       {
         question: "How do the online clubs work?",
         answer:
-          "Everything happens in a private Telegram group: recorded lessons, regular live sessions (lectures and practice), music playlists for solo practice and detailed feedback on your homework. Runway Online Club is 50 € per month, Old Way Online Club is 90 € for 2 months.",
+          "A private Telegram group: recorded lessons, live sessions with lectures and practice, music for solo training and detailed homework feedback. Runway Online Club is 50 € per month, Old Way Online Club is 90 € for 2 months.",
       },
       {
-        question: "How do I get to the studio in Warsaw?",
-        answer:
-          "The studio is at Brzeska 18, Warsaw. Use the Google Maps button in the Contact block at the bottom of the page for directions. Arrive 10 minutes early to catch the warm-up.",
+        question: "How do I find the studio?",
+        answer: "Brzeska 18, Warsaw. Tap “Directions” in the Contact block. Arrive 10 minutes before class.",
       },
       {
-        question: "Can I give a class as a gift?",
-        answer:
-          "Yes — gift certificates are available for any of Verushka's classes. Leave a request through the booking form and she'll get in touch to confirm the details.",
+        question: "Can I gift a class?",
+        answer: "Yes. Gift certificates cover any of Verushka's classes. Send a request through the form and she'll get in touch to sort the details.",
       },
     ],
   },
@@ -174,9 +158,9 @@ export const en: Dictionary = {
       label: "Studio",
       address: "Brzeska 18",
       city: "Warszawa, Poland",
-      note: "Studio groups & private classes",
-      bookCta: "Book a Class",
-      mapsCta: "Open in Google Maps",
+      note: "Group & private classes",
+      bookCta: "Book",
+      mapsCta: "Directions",
     },
     socialTitle: "Get in Touch",
     socials: {

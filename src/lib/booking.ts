@@ -5,7 +5,7 @@ export type ClassId =
   | "runway-club"
   | "old-way-club";
 
-// Единая форма записи для всех программ.
+/** Single Google Form shared by every programme. */
 export const BOOKING_FORM_URL = "https://forms.gle/5YLK9F4jTAg8kgQB9";
 
 export const bookingLinkProps = {

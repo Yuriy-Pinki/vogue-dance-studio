@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import Image from "next/image";
 import { asset } from "@/lib/asset";
+import { MEDIA } from "@/lib/media";
 import type { AboutDictionary } from "@/dictionaries/types";
 
 interface AboutSectionProps {
@@ -11,11 +12,11 @@ interface AboutSectionProps {
 
 const SNAP = [0.85, 0, 0.15, 1] as const;
 
-// Порядок совпадает с dict.gallery
+/** Order matches `dict.gallery` captions. */
 const GALLERY = [
-  { src: "/assets/optimized/verushka-floor.webp", aspect: "aspect-square", offset: "" },
-  { src: "/assets/optimized/house-of-bonchinche.webp", aspect: "aspect-[1080/1428]", offset: "md:mt-24" },
-  { src: "/assets/optimized/verushka-arch.webp", aspect: "aspect-[1080/1740]", offset: "md:mt-10" },
+  { image: MEDIA.floor, aspect: "aspect-square", offset: "" },
+  { image: MEDIA.house, aspect: "aspect-[1080/1428]", offset: "md:mt-24" },
+  { image: MEDIA.arch, aspect: "aspect-[1080/1740]", offset: "md:mt-10" },
 ] as const;
 
 const reveal: Variants = {
@@ -38,7 +39,6 @@ export default function AboutSection({ dict }: AboutSectionProps) {
 
   return (
     <section id="about" className="relative scroll-mt-16 border-t border-chalk/10 bg-obsidian px-6 py-24 text-chalk md:px-12 md:py-36">
-      {/* Шапка разворота */}
       <motion.header className="mb-16 md:mb-24" {...motionProps}>
         <p className="mb-6 font-mono text-xs uppercase tracking-[0.35em] text-gold">{dict.eyebrow}</p>
         <h2 className="font-display text-[clamp(2.75rem,8vw,7rem)] uppercase leading-[0.9] tracking-[0.06em]">
@@ -56,7 +56,6 @@ export default function AboutSection({ dict }: AboutSectionProps) {
 
       <div className="grid gap-16 lg:grid-cols-12 lg:gap-12">
         <div className="lg:col-span-8">
-          {/* Pull quote */}
           <motion.figure className="relative mb-14" {...motionProps}>
             <span
               aria-hidden
@@ -84,7 +83,6 @@ export default function AboutSection({ dict }: AboutSectionProps) {
           </motion.div>
         </div>
 
-        {/* Досье */}
         <motion.aside className="lg:col-span-4" {...motionProps} custom={0.25}>
           <div className="border border-gold/30 bg-charcoal p-8">
             <h3 className="mb-6 font-mono text-xs uppercase tracking-[0.35em] text-gold">{dict.factsTitle}</h3>
@@ -100,17 +98,16 @@ export default function AboutSection({ dict }: AboutSectionProps) {
         </motion.aside>
       </div>
 
-      {/* Галерея выходов: монохром → цвет при наведении */}
       <div className="mt-20 grid items-start gap-6 sm:grid-cols-2 md:mt-28 md:grid-cols-3 md:gap-8">
-        {GALLERY.map((image, i) => {
-          const text = dict.gallery[i];
-          if (!text) return null;
+        {GALLERY.map(({ image, aspect, offset }, i) => {
+          const caption = dict.gallery[i];
+          if (!caption) return null;
           return (
-            <motion.figure key={image.src} className={`group ${image.offset}`} {...motionProps} custom={i * 0.12}>
-              <div className={`group relative overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${image.aspect}`}>
+            <motion.figure key={image.src} className={`group ${offset}`} {...motionProps} custom={i * 0.12}>
+              <div className={`group relative overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${aspect}`}>
                 <Image
                   src={asset(image.src)}
-                  alt={text.alt}
+                  alt={image.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="object-cover grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
@@ -121,7 +118,7 @@ export default function AboutSection({ dict }: AboutSectionProps) {
                 />
               </div>
               <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-silver transition-colors group-hover:text-gold">
-                {text.caption}
+                {caption}
               </figcaption>
             </motion.figure>
           );

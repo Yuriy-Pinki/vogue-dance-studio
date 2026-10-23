@@ -50,7 +50,6 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
         </motion.header>
 
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
-          {/* Карточка студии */}
           <motion.div
             className="group relative border border-gold/50 bg-charcoal p-8 transition-colors duration-300 hover:border-gold md:p-12 lg:col-span-7"
             {...motionProps}
@@ -95,7 +94,6 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
             </div>
           </motion.div>
 
-          {/* Соцсети */}
           <motion.div className="flex flex-col lg:col-span-5" {...motionProps} custom={0.2}>
             <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.3em] text-gold">{dict.socialTitle}</p>
             <ul className="border-t border-chalk/15">
@@ -128,7 +126,6 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
         </div>
       </div>
 
-      {/* Wordmark */}
       <motion.p
         aria-hidden
         className="relative mt-20 select-none whitespace-nowrap px-6 text-center font-display text-[clamp(2.5rem,11vw,15rem)] uppercase leading-none tracking-[0.08em] text-transparent [-webkit-text-stroke:1px_rgba(212,175,55,0.35)] md:mt-28"
@@ -140,7 +137,6 @@ export default function FooterSection({ dict, year }: FooterSectionProps) {
         {dict.wordmark}
       </motion.p>
 
-      {/* Нижняя плашка: копирайт, титры, наверх */}
       <div className="relative flex flex-col gap-6 border-t border-chalk/10 px-6 py-8 font-mono text-[11px] uppercase tracking-[0.2em] text-silver md:flex-row md:items-center md:justify-between md:px-12">
         <p>{dict.copyright.replace("{year}", String(year))}</p>
         <dl className="flex flex-wrap gap-x-8 gap-y-2">
