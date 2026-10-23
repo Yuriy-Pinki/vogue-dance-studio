@@ -104,17 +104,17 @@ export default function AboutSection({ dict }: AboutSectionProps) {
           if (!caption) return null;
           return (
             <motion.figure key={image.src} className={`group ${offset}`} {...motionProps} custom={i * 0.12}>
-              <div className={`group relative overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${aspect}`}>
+              <div className={`group relative isolate overflow-hidden border border-chalk/10 transition-colors duration-500 hover:border-gold ${aspect}`}>
                 <Image
                   src={asset(image.src)}
                   alt={image.alt}
                   fill
                   sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
+                  className="object-cover grayscale contrast-125 transition-transform duration-500 group-hover:scale-105 [@media(hover:none)]:grayscale-0"
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-fuchsia opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-20"
+                  className="pointer-events-none absolute inset-0 bg-red-600 opacity-0 mix-blend-color transition-opacity duration-500 group-hover:opacity-80"
                 />
               </div>
               <figcaption className="mt-3 font-mono text-[10px] uppercase tracking-[0.3em] text-silver transition-colors group-hover:text-gold">

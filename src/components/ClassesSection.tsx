@@ -67,17 +67,17 @@ export default function ClassesSection({ dict }: ClassesSectionProps) {
               viewport={{ once: true, margin: "-60px" }}
               whileHover={reduceMotion ? undefined : { y: -6, transition: { duration: 0.2, ease: SNAP } }}
             >
-              <div className={`relative aspect-[4/3] overflow-hidden border-b border-chalk/10 ${i >= 3 ? "lg:aspect-[16/9]" : ""} ${i === PROGRAMS.length - 1 ? "md:aspect-[16/9]" : ""}`}>
+              <div className={`relative isolate aspect-[4/3] overflow-hidden border-b border-chalk/10 ${i >= 3 ? "lg:aspect-[16/9]" : ""} ${i === PROGRAMS.length - 1 ? "md:aspect-[16/9]" : ""}`}>
                 <Image
                   src={asset(program.image.src)}
                   alt={program.image.alt}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
-                  className="object-cover object-top grayscale contrast-125 transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0 [@media(hover:none)]:grayscale-0"
+                  className="object-cover object-top grayscale contrast-125 transition-transform duration-500 group-hover:scale-105 [@media(hover:none)]:grayscale-0"
                 />
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-fuchsia opacity-0 mix-blend-overlay transition-opacity duration-500 group-hover:opacity-20"
+                  className="pointer-events-none absolute inset-0 bg-red-600 opacity-0 mix-blend-color transition-opacity duration-500 group-hover:opacity-80"
                 />
                 <span className="pointer-events-none absolute left-4 top-4 bg-obsidian/85 px-2.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-chalk backdrop-blur-md">
                   {item.format}
